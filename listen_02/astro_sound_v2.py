@@ -205,12 +205,24 @@ class AstroSoundV2:
 
 def main():
     """主程序"""
-    # 路径设置
-    data_dir = r"F:\my_github\listen_to_the_universe\TestData\RGBL\M38"
-    output_dir = r"F:\my_github\listen_to_the_universe\listen_02"
+    # 获取当前脚本所在目录（listen_02）
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # 路径设置（相对路径）
+    # 数据路径：从listen_02向上退一级到项目根目录，然后进入TestData
+    data_dir = os.path.join(script_dir, "..", "TestData", "RGBL", "M38")
+    data_dir = os.path.normpath(data_dir)  # 规范化路径
+    
+    # 输出路径：当前目录（listen_02）
+    output_dir = script_dir
     
     # 确保输出目录存在
     os.makedirs(output_dir, exist_ok=True)
+    
+    print(f"[路径信息]")
+    print(f"  脚本目录: {script_dir}")
+    print(f"  数据目录: {data_dir}")
+    print(f"  输出目录: {output_dir}")
     
     # 创建处理器并运行
     processor = AstroSoundV2(duration=20, samplerate=44100)

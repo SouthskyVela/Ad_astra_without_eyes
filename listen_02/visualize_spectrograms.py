@@ -137,10 +137,12 @@ def create_mixed_spectrogram(output_dir, samplerate=44100):
 
 def main():
     """主程序"""
-    output_dir = r"F:\my_github\listen_to_the_universe\listen_02"
+    # 获取当前脚本所在目录（listen_02）
+    output_dir = os.path.dirname(os.path.abspath(__file__))
     
     print("=" * 60)
     print("生成RGBL四通道音频可视化")
+    print(f"工作目录: {output_dir}")
     print("=" * 60)
     
     # 创建对比图
